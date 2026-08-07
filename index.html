@@ -1,1 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>DataSense AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        .header {
+            background: #111827;
+            color: white;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        .header p {
+            margin: 6px 0 0;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 18px;
+        }
+
+        .welcome {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .welcome h2 {
+            margin-top: 0;
+        }
+
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .kpi {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .kpi-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .assistant {
+            background: white;
+            margin-top: 18px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .assistant h2 {
+            margin-top: 0;
+        }
+
+        .question {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #response {
+            margin-top: 15px;
+            padding: 15px;
+            background: #eff6ff;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 600px) {
+            .kpis {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>DataSense AI</h1>
+        <p>AI-Powered Business Intelligence & Decision Intelligence</p>
+    </div>
+
+    <div class="container">
+
+        <div class="welcome">
+            <h2>Business Overview</h2>
+            <p>
+                Welcome to DataSense AI. Your intelligent business
+                analytics assistant.
+            </p>
+        </div>
+
+        <div class="kpis">
+
+            <div class="kpi">
+                <div>Monthly Sales</div>
+                <div class="kpi-number">12,450</div>
+                <div>Units</div>
+            </div>
+
+            <div class="kpi">
+                <div>Sales Value</div>
+                <div class="kpi-number">$2.4M</div>
+                <div>This Month</div>
+            </div>
+
+            <div class="kpi">
+                <div>Growth</div>
+                <div class="kpi-number">+14.8%</div>
+                <div>vs Last Month</div>
+            </div>
+
+        </div>
+
+        <div class="assistant">
+
+            <h2>🤖 Ask DataSense AI</h2>
+
+            <p>
+                Ask a business question about your data.
+            </p>
+
+            <input
+                id="question"
+                class="question"
+                type="text"
+                placeholder="Example: Why did sales increase?"
+            >
+
+            <button onclick="askAI()">
+                Ask DataSense AI
+            </button>
+
+            <div id="response"></div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        DataSense AI • Portfolio Demonstration
+    </div>
+
+    <script>
+        function askAI() {
+
+            const question =
+                document.getElementById("question").value;
+
+            const response =
+                document.getElementById("response");
+
+            if (question.trim() === "") {
+                response.style.display = "block";
+                response.innerHTML =
+                    "Please enter a business question.";
+                return;
+            }
+
+            response.style.display = "block";
+
+            response.innerHTML =
+                "<strong>DataSense AI Insight:</strong><br><br>" +
+                "Based on the current business data, sales " +
+                "increased by 14.8%. The strongest contribution " +
+                "appears to come from increased monthly demand. " +
+                "Further analysis will identify the specific " +
+                "products, customers and regions driving the growth.";
+        }
+    </script>
+
+</body>
+</html>
