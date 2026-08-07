@@ -223,13 +223,44 @@
 
             response.style.display = "block";
 
-            response.innerHTML =
-                "<strong>DataSense AI Insight:</strong><br><br>" +
-                "Based on the current business data, sales " +
-                "increased by 14.8%. The strongest contribution " +
-                "appears to come from increased monthly demand. " +
-                "Further analysis will identify the specific " +
-                "products, customers and regions driving the growth.";
+           // Current dashboard business metrics
+const monthlySales = 12450;
+const salesValue = 2400000;
+const growth = 14.8;
+
+let insight = "";
+
+if (question.toLowerCase().includes("sales")) {
+    insight =
+        "Monthly sales are currently " + monthlySales.toLocaleString() +
+        " units, with a sales value of $" +
+        (salesValue / 1000000).toFixed(1) +
+        "M. Sales have grown by " + growth +
+        "% compared with last month.";
+} else if (
+    question.toLowerCase().includes("growth") ||
+    question.toLowerCase().includes("increase")
+) {
+    insight =
+        "Sales increased by " + growth +
+        "% compared with last month. " +
+        "The current monthly sales volume is " +
+        monthlySales.toLocaleString() +
+        " units. Further analysis can identify the products, customers and regions driving this growth.";
+} else {
+    insight =
+        "Based on the available business metrics, monthly sales are " +
+        monthlySales.toLocaleString() +
+        " units, sales value is $" +
+        (salesValue / 1000000).toFixed(1) +
+        "M, and growth is +" +
+        growth +
+        "% versus last month.";
+}
+
+response.innerHTML =
+    "<strong>DataSense AI Insight:</strong><br><br>" +
+    insight;
         }
     </script>
 
